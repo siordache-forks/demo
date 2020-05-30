@@ -1,5 +1,5 @@
 module demo.main {
-    requires lombok;
+    requires static lombok;
     requires spring.boot;
     requires spring.boot.autoconfigure;
     requires org.jooq;
