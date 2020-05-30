@@ -2,13 +2,13 @@ plugins {
     id 'org.springframework.boot' version '2.3.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java-library'
-    id 'org.beryx.jlink' version '2.19.0'
+    id "org.beryx.runtime" version "1.8.5"
     id "nu.studer.jooq" version "4.2"
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-mainClassName = 'demo.main/com.example.demo.DemoApplication'
+mainClassName = 'com.example.demo.DemoApplication'
 sourceCompatibility = 11
 targetCompatibility = 11
 
@@ -74,4 +74,12 @@ jooq {
             }
         }
     }
+}
+
+tasks.jar.enabled = true
+
+runtime {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    additive = true
+    modules = ['java.instrument', 'jdk.unsupported']
 }
